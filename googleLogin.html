@@ -30,7 +30,7 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 23px;
             font-weight: 600;
-            letter-spacing: -3.8px;
+            letter-spacing: -3.4px;
             margin-bottom: 30px; 
         }
         .google-logo span {
@@ -152,21 +152,66 @@
  .form-section {
             transition: transform 0.2s ease-in-out;
         }
-        .slide-left {
-            transform: translateX(-12%);
-        }
 
     
 
         #welcome-text {
+            text-align: center; 
+            color: rgb(32,33,36);
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
+        }
+        
+        .password-container {
+            z-index: 10;
+            position: absolute !important;
+            top: -200px ; /* Adjust this value to move the container higher up */
+            bottom: 80px;
+            left: 50%; /* Position at 50% of the container width */
+            width: 100%; /* Set width to 100% of the parent container */
+            max-width: 500px; /* Same as the container max-width */
+            min-height: 0vh !important;
+
+        }
+
+        /* Adjustments for the sliding effect */
+        .slide-left {
+            transform: translateX(-50%); /* Adjust for centering */
+        }
+
+     
+
+        .Welcome{
+            font-family: 'Noto Sans', Arial, sans-serif;
             font-size: 24px;
             color: rgb(32,33,36);
             font-weight: 400;
-            text-align: left; 
+            margin: 0;
         }
         
-        .password-container{
-            left: 100px;
+        
+        .show-password {
+            text-align: left;
+            padding-left: 9px;
+            margin: auto;
+            display: block;
+            max-width: 345px;
+
+            color: rgb(32,33,36);
+            font-size: 14px;
+            font-weight: 400;
+        }
+        #password-button {
+            margin: 20px auto;
+            margin-left: 120px;
+        }
+
+        .forgotP{
+            text-align: left;
+            padding-left: 10px;
+            max-width: 345px;
+
         }
 
     </style>
@@ -193,9 +238,8 @@
                 <p class="private">Not on your computer? Use a private browsing window to sign in. <a href="#" class="learn">Learn more</a></p>
                 <p class="createA"><a href="#" class="learn">Create Account</a> <button class="submit-btn" type="button" onclick="slideToPassword()">Next</button></p>
             </form>
-            
-            <!-- Password container initially hidden and placed to the right outside of view -->
-            <div id="password-container" class="password-container" style="display: none; position: absolute; top:0; right:0; transform: translateX(100%);">
+
+            <div id="password-container" class="password-container" style="display: none; right:0; transform: translateX(100%);">
                 <div class="google-logo">
                     <span class="g1">G</span>
                     <span class="o1">o</span>
@@ -204,14 +248,20 @@
                     <span class="l">l</span>
                     <span class="e">e</span>
                 </div>
-                <h2 id="welcome-text">Welcome,</h2>
+                <h2>Welcome,</h2>
+                <p id="welcome-text"></p>
                 <form id="password-form">
                     <input id="password-input" class="form-input" type="password" name="password" placeholder="Enter password" required>
                     <div class="show-password">
                         <input id="toggle-password" type="checkbox" onclick="togglePassword()"> Show password
                     </div>
-                    <button id="password-button" class="submit-btn" type="submit">Next</button>
-                </form>
+                    <span>
+                        <p class="forgotP"><a href="#" class="learn">Forgot password?</a>
+                            <button id="password-button" class="submit-btn" type="submit">Next</button>
+
+                        </p>
+                    </span>
+                    </form>
             </div>
         </div>
     </div>
@@ -225,7 +275,7 @@
             const welcomeText = document.getElementById('welcome-text');
 
             // Update welcome text
-            welcomeText.textContent = `Welcome, ${email}`;
+            welcomeText.textContent = `${email}`;
 
             setTimeout(() => {
                 emailForm.style.display = 'none';
