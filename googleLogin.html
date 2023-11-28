@@ -17,13 +17,21 @@
             margin: 0;
             padding: 20px;
         }
+        .container {
+            text-align: center;
+            max-width: 500px;
+            bottom: 232px;
+            width: 100%;
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+        }
         .google-logo {
             font-family: 'Noto Sans', sans-serif;
             font-size: 23px;
             font-weight: 600;
             letter-spacing: -3.8px;
-            position: absolute;
-            top: 35px;
+            margin-bottom: 30px; 
         }
         .google-logo span {
             display: inline-block;
@@ -36,96 +44,207 @@
         h2 {
             font-size: 24px;
             color: rgb(32,33,36);
-            position: absolute;
-            top: 65px;
-            font-weight: 400;  /* Adjusted the font weight */
+            font-weight: 400;
+            margin: 0;
         }
         p {
             color: rgb(32,33,36);
-            /*color: #5F6368; REALLY NICE GRAY COLOR */
             font-size: 14px;
-            position: absolute;
-            top: 115px;
             font-weight: 400;
+            margin: 10px 0;
         }
         .form-input {
-            width: 345px;
+            width: 100%; 
+            max-width: 345px;
             height: 50px;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
             font-size: 14px;
-            position: absolute;
-            top: 200px; 
-            left: 50%;
-            margin-left: -172.5px; 
+            margin: 20px auto; 
             box-sizing: border-box;
         }
         .submit-btn {
-            width: 21%;
+            width: 100%;
+            max-width: 75px;
+            font-weight: bold;
             padding: 10px;
-            position: absolute;
-            margin-left: 90px; 
-            top: 390px; 
             border-radius: 5px;
             border: none;
             color: white;
             background-color: #1a73e8;
             cursor: pointer;
             font-size: 14px;
+            margin: 20px auto;
+            margin-left: 156px;
         }
-        .forgotE {
-            position: absolute;
-            top: 240px;
-            left: 25px;
-            font-size: 13.5px;
-            font-weight: 500px;
+        .forgotE, .createA, .private {
+            text-align: left;
+            padding-left: 10px;
+            margin: 10px auto;
+            display: block;
+            max-width: 345px;
+        }
+
+        .private{
+            margin-top: 40px;
+        }
+
+        .forgotE{
+            margin-top: -10px;
+        }
+        .learn {
             color: #1a73e8;
-            font-weight: 400;
+            font-weight: bold;
+            text-decoration: none;
         }
-        .private {
-            position: absolute;
-            top: 300px;
-            left: 25px;
-            font-size: 12px;
-            color: #5F6368;
-            font-weight: 400;
-            width: 345px;
+
+        /* Media Queries  */
+        @media (max-width: 407px) {
+            .submit-btn{
+                margin-left: 125px;
+            }
+            .form-input,
+
+            .forgotE,
+            .private,
+            .createA {
+                width: calc(100% - 20px);
+            }
+            .forgotE,
+            .private,
+            .createA {
+                padding-left: 10px;
+            }
         }
-        .learn{
-            color: #1a73e8;
-            font-weight: 400;
+
+        @media (max-height: 750px) {
+            .container {
+                bottom: 100px;
+            }
+            .form-input,
+            .submit-btn,
+            .forgotE,
+            .private,
+            .createA {
+                width: calc(100% - 20px);
+            }
+            .forgotE,
+            .private,
+            .createA {
+                padding-left: 10px;
+            }
         }
-        .createA {
-            position: absolute;
-            left: 25px;
-            top: 385px; 
-            font-size: 13.5px;
-            color: #1a73e8;
-            font-weight: 400;
+
+
+        @media (min-width: 768px) {
+
+            .form-input,
+            .submit-btn,
+            .forgotE,
+            .private,
+            .createA {
+                width: 345px;
+            }
         }
+
+        /* STyles for password screen */
+ .form-section {
+            transition: transform 0.2s ease-in-out;
+        }
+        .slide-left {
+            transform: translateX(-12%);
+        }
+
+    
+
+        #welcome-text {
+            font-size: 24px;
+            color: rgb(32,33,36);
+            font-weight: 400;
+            text-align: left; 
+        }
+        
+        .password-container{
+            left: 100px;
+        }
+
     </style>
 </head>
 <body>
-    <div class="google-logo">
-        <span class="g1">G</span>
-        <span class="o1">o</span>
-        <span class="o2">o</span>
-        <span class="g2">g</span>
-        <span class="l">l</span>
-        <span class="e">e</span>
+    <div class="container">
+
+        <div id="form-section" class="form-section">
+
+            <!-- Email form -->
+            <form id="email-form" style="display: block;">
+                <div class="google-logo">
+                    <span class="g1">G</span>
+                    <span class="o1">o</span>
+                    <span class="o2">o</span>
+                    <span class="g2">g</span>
+                    <span class="l">l</span>
+                    <span class="e">e</span>
+                </div>
+                <h2>Sign in</h2>
+                <p>Use your Google Account</p>
+                <input id="email-input" class="form-input" type="email" name="email" placeholder="Email or phone" required>
+                <p class="forgotE"><a href="#" class="learn">Forgot Email?</a></p>
+                <p class="private">Not on your computer? Use a private browsing window to sign in. <a href="#" class="learn">Learn more</a></p>
+                <p class="createA"><a href="#" class="learn">Create Account</a> <button class="submit-btn" type="button" onclick="slideToPassword()">Next</button></p>
+            </form>
+            
+            <!-- Password container initially hidden and placed to the right outside of view -->
+            <div id="password-container" class="password-container" style="display: none; position: absolute; top:0; right:0; transform: translateX(100%);">
+                <div class="google-logo">
+                    <span class="g1">G</span>
+                    <span class="o1">o</span>
+                    <span class="o2">o</span>
+                    <span class="g2">g</span>
+                    <span class="l">l</span>
+                    <span class="e">e</span>
+                </div>
+                <h2 id="welcome-text">Welcome,</h2>
+                <form id="password-form">
+                    <input id="password-input" class="form-input" type="password" name="password" placeholder="Enter password" required>
+                    <div class="show-password">
+                        <input id="toggle-password" type="checkbox" onclick="togglePassword()"> Show password
+                    </div>
+                    <button id="password-button" class="submit-btn" type="submit">Next</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <h2>Sign in</h2>
-    <p>Use your Google Account</p>
-    <form action="#" method="POST">
-        <input class="form-input" type="email" name="email" placeholder="Email or phone" required>
-        <button class="submit-btn" type="submit">Next</button>
-        <p class = "forgotE">Forgot Email?</p>
-        <p class = "private">Not on your computer? Use a private browsing window to sign in. <span class = "learn">Learn more</span></p>
 
-        <p class = "createA">Create Account</p>
+    <script>
+        function slideToPassword() {
+            const emailForm = document.getElementById('email-form');
+            const passwordContainer = document.getElementById('password-container');
+            const formSection = document.getElementById('form-section');
+            const email = document.getElementById('email-input').value;
+            const welcomeText = document.getElementById('welcome-text');
 
+            // Update welcome text
+            welcomeText.textContent = `Welcome, ${email}`;
 
-    </form> 
+            setTimeout(() => {
+                emailForm.style.display = 'none';
+                document.getElementById('password-form').style.display = 'block';
+            }, ); 
+
+            // Slide out email form and slide in password container
+            formSection.classList.add('slide-left');
+            passwordContainer.style.display = 'block';
+            passwordContainer.style.transform = 'translateX(0)';
+
+            // Hide email form and show password form after the sliding transition
+
+        }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password-input');
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        }
+    </script>
 </body>
 </html>
