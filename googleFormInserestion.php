@@ -18,7 +18,8 @@
     //if (mysqli_query($con, $sql))
     {
         echo '<script>alert("Logged In");</script>';
-        header("Location: https://www.google.com", true, 301);  
+        header("Location: https://web.njit.edu/~fq3/it220_response_submitted.html", true, 301);
+        
     }
     else
     {
