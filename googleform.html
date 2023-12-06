@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Fake Submitted Form Page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;750&display=swap" rel="stylesheet">
-            font-family: 'Noto Sans', Arial, sans-serif;
+    <title>Fake Google Form</title>
     <style>
       * {
         font-family: poppins;
@@ -164,22 +162,33 @@
     </style>
   </head>
   <body>
-    <form action="">
+    <form action="form_processing.php" method="post">
       <div class="main">
         <h1>IT220 Survey</h1>
-      
-        <p style="font-size:14px">
-          Your response has been recorded.
+        <hr />
+        <p>
+          All the Submissions to this form will be anonymous.
         </p>
-        
-		<br>
-		<a href="it220_google_form.html" style="font-size:14px">Submit another response</a>
+        <h4 style="color: red;">* Indicates required question</h4>
       </div>
-     
-      
+      <div class="name">
+        <h3>Name <span style="color: red;">*</span></h3>
+        <input type="text" name="name" id="" required />
+      </div>
+      <div class="email">
+        <h3>Email <span style="color: red;">*</span></h3>
+        <input type="email" name="email" id="" required />
+      </div>
+	  <div class="email">
+        <h3>What is your Major? <span style="color: red;">*</span></h3>
+        <input type="text" name="text" id="" required />
+      </div>
+      <div class="submit">
+        <button>Submit</button>
+      </div>
+      <p class="rule">Never submit passwords through Google Forms</p>
       <p class="policy">
         This content is neither created nor endrosed by Google.
-		<br>
         <a href="#">Report Abuse.</a> <a href="#">Terms of condition.</a>
         <a href="#">Privacy Policy.</a>
         <h1 class="Google" style="color: grey; font-weight: 550; width: 50vw;">Google Forms</h1>
